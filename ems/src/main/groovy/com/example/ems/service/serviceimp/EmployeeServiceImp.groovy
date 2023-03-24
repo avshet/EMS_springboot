@@ -28,7 +28,7 @@ class EmployeeServiceImp implements EmployeeService {
     }
 
     @Override
-    Employee getEmployeeByID(Long id) {
+    Employee getEmployeeByID(String id) {
 //        Optional<Employee> result = employeeRepository.findById(id);
 //        if(result.isPresent()){
 //            return result.get();
@@ -41,7 +41,7 @@ class EmployeeServiceImp implements EmployeeService {
     }
 
     @Override
-    Employee updateEmployee(Employee employee, Long id) {
+    Employee updateEmployee(Employee employee, String id) {
         Employee existingEmployee = employeeRepository.findById((id)).orElseThrow(()->new ResourceNotFoundException("ID doesn't exist "+id));
         existingEmployee.firstName = employee.firstName;
         existingEmployee.lastName = employee.lastName;
@@ -52,7 +52,7 @@ class EmployeeServiceImp implements EmployeeService {
     }
 
     @Override
-    void deleteEmployee(long id) {
+    void deleteEmployee(String id) {
         Employee existingEmployee = employeeRepository.findById((id)).orElseThrow(()->new ResourceNotFoundException("ID doesn't exist "+id));
         employeeRepository.deleteById(id);
     }

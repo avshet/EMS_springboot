@@ -1,10 +1,9 @@
 package com.example.ems.model.dto
 
 import com.example.ems.model.Employee
-import jakarta.validation.constraints.NotEmpty
-import jakarta.validation.constraints.Pattern
-import jakarta.validation.constraints.Size
 import jakarta.validation.constraints.Email
+import jakarta.validation.constraints.NotEmpty
+import jakarta.validation.constraints.Size
 import lombok.Data
 
 @Data

@@ -30,12 +30,12 @@ class EmployeeController {
 
 
     @GetMapping("{id}")
-    public ResponseEntity<Employee> findById(@PathVariable("id") Long id ){
+    public ResponseEntity<Employee> findById(@PathVariable("id") String id ){
         return new ResponseEntity<Employee>(employeeServiceImp.getEmployeeByID(id), HttpStatus.OK);
     }
 
     @PostMapping("/update/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") Long id, @RequestBody Employee employee){
+    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") String id, @RequestBody Employee employee){
         return new ResponseEntity<Employee>(employeeServiceImp.updateEmployee(employee,id),HttpStatus.OK);
     }
 
@@ -46,7 +46,7 @@ class EmployeeController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteEmployee(@RequestParam("id") Long id){
+    public ResponseEntity<String> deleteEmployee(@RequestParam("id") String id){
         employeeServiceImp.deleteEmployee(id);
         return new ResponseEntity<String>("Employee Deleted Successfully",HttpStatus.OK);
     }

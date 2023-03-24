@@ -9,11 +9,11 @@ interface EmployeeService {
 
     List<Employee> getAllEmployee();
 
-    Employee getEmployeeByID(Long id);
+    Employee getEmployeeByID(String id);
 
-    Employee updateEmployee(Employee employee, Long id);
+    Employee updateEmployee(Employee employee, String id);
 
-    void deleteEmployee(long id);
+    void deleteEmployee(String id);
 
     Page<Employee> findPaginated(int page, int size);
 }
