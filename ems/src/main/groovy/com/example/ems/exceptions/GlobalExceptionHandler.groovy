@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.context.request.WebRequest
 
+import java.sql.SQLIntegrityConstraintViolationException
+
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -28,6 +30,15 @@ public class GlobalExceptionHandler {
         body.put("errors", errors);
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    protected ResponseEntity<Object> handleSQLIntegrityConstraintViolation(SQLIntegrityConstraintViolationException ex) {
+
+        Map<String, List<String>> body = new HashMap<>();
+        body.put("message", ex.getMessage());
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<?> resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
         Map<String, String> body = new HashMap<>();
