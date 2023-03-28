@@ -23,6 +23,11 @@ class DepartmentServiceImp implements DepartmentService{
     }
 
     @Override
+    List<Department> findAllDepartments() {
+        return departmentRepository.findAll();
+    }
+
+    @Override
     Department findDepartmentById(Long id) {
         return departmentRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Department doesn't exist"));
     }

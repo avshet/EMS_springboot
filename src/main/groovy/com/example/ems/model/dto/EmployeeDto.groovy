@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired
 
 class EmployeeDto {
 
+    String id;
+
     @NotEmpty(message = "The full name is required")
     @Size(min = 2, max = 100, message = "The length of first name should be between 2 and 100")
     String firstName;
