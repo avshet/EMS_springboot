@@ -35,6 +35,11 @@ class EmployeeController {
     //Get Employee by ID
     @GetMapping("{id}")
     public ResponseEntity<Employee> findById(@PathVariable("id") String id) {
+        Employee employee = employeeServiceImp.getEmployeeByID(id)
+//        print(employee.getWhiteList())
+        for(Employee employee1:employee.getWhiteList()){
+            print(employee1);
+        }
         return new ResponseEntity<Employee>(employeeServiceImp.getEmployeeByID(id), HttpStatus.OK);
     }
 

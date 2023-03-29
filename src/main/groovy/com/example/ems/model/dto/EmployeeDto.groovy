@@ -29,5 +29,6 @@ class EmployeeDto {
     @NotNull(message = "The department should be given")
     Long departmentId;
 
+    List<String> whiteList;
 
 }

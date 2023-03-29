@@ -46,7 +46,9 @@ class EmployeeServiceImp implements EmployeeService {
         existingEmployee.firstName = employee.firstName;
         existingEmployee.lastName = employee.lastName;
         existingEmployee.email = employee.email;
-
+        existingEmployee.department = employee.department;
+        existingEmployee.whiteList = employee.whiteList;
+        existingEmployee.whiteListOf = employee.whiteListOf;
         employeeRepository.save(existingEmployee);
         return existingEmployee;
     }

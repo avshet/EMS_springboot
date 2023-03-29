@@ -29,7 +29,6 @@ class EmployeeServiceImpTest {
     @BeforeEach
     void setUp(){
         underTest = new EmployeeServiceImp(employeeRepository);
-        Employee employee = new Employee(id: "emp-01", firstName: "Umesh", lastName: "Yadav", email: "umeshyadav@gmail.com");
     }
 
     @DisplayName("JUnit test for SaveEmployee method")

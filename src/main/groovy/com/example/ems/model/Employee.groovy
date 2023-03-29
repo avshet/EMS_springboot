@@ -1,10 +1,12 @@
 package com.example.ems.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
+import jakarta.persistence.ManyToMany
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.OneToOne
 import org.hibernate.annotations.GenericGenerator
@@ -32,6 +34,14 @@ class Employee {
     @JsonIgnore
     Department department;
 
+    @ManyToMany
+    @JsonIgnore
+    List<Employee> whiteList;
+
+    @ManyToMany(mappedBy = "whiteList")
+    @JsonIgnore
+    List<Employee> whiteListOf;
+
     public Employee(){
 
     }
@@ -42,4 +52,14 @@ class Employee {
     }
 
     //fields in groovy should not be made public because default getter and setter won't be generated if fields are private
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", department=" + department +
+                '}';
+    }
 }
